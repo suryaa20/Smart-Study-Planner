@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>Smart Study Planner</h1>
+</header>
+
+<nav>
+    <button onclick = "showSection('dashboard')" id = "navButton">Dashboard</button>
+    <button onclick = "showSection('subjects')" id = "navButton">Subjects</button>
+    <button onclick = "showSection('schedule')" id  = "navButton">Schedule</button>
+    <button onclick = "showSection('tasks')" id = " navButton">Tasks</button>
+    <button onclick = "showSection('progress')" id = "navbutton">Progress</button>
+    <button onclick = "showSection('settings')" id = "navButton">Settings</button>
+</nav>
+
+<main>
+
+<section id = "dashboard" class = "section active">
+    <h2>Dashboard</h2>
+    <div class = "card">Total Subjects: <span id = "totalSubjects">0</span></div>
+    <div class = "card"> Upcoming Tasks: <span id = "totalTasks">0</span></div>
+    <div class = "card"> Today’s Schedule: <span id = "todaySchedule">0</span> sessions</div>
+</section>
+ 
+<section id = "subjects" class = "section">
+    <h2>Subject Management</h2>
+    <input id = "subName" placeholder = "Subject Name">
+    <select id = "subPriority">
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+    </select>
+    <button onclick = "addSubject()" id = "regBut">Add</button>
+    <ul id = "subjectList" class = "list"></ul>
+</section>
+
+<section id = "schedule" class = "section">
+    <h2>Schedule Planner</h2>
+    <input type = "day" id = "day" placeholder = "Day (Mon)">
+    <input type = "time" id = "time">
+    <input id = "scheduleSubject" placeholder = "Subject">
+    <button onclick = "addSchedule()" id = "regBut">Add Schedule</button>
+    <ul id = "scheduleList" class = "list"></ul>
+</section>
+
+<section id = "tasks" class = "section">
+    <h2>Task Manager</h2>
+    <input id = "taskName" placeholder = "Task">
+    <select id = "taskType">
+        <option>Assignment</option>
+        <option>Exam</option>
+    </select>
+    <input type = "date" id = "taskDate">
+    <button onclick = "addTask()" id = "regBut">Add Task</button>
+    <ul id = "taskList" class = "list"></ul>
+</section>
+
+<section id = "progress" class = "section">
+    <h2>Progress Analytics</h2>
+    <div class = "card"> Subjects Added: <span id="pSubjects">0</span></div>
+    <div class = "card"> Tasks Completed: <span id="pTasks">0</span></div>
+</section>
+
+
+<section id="settings" class="section">
+    <h2>Settings</h2>
+    <button onclick = "toggleTheme()" id = "regBut"> Toggle Theme</button>
+    <button onclick = "resetData()" id = "regBut"> Reset Data</button>
+    <button onclick = "exportData()" id = "regBut"> Export Data</button>
+</section>
+
+</main>
+
+<script src = "script.js"></script>
+</body>
+</html>
