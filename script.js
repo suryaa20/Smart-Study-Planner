@@ -160,6 +160,8 @@ function updateDashboard() {
 
     progressBar.style.width = progress + "%";
     progressText.innerText = progress + "% Completed";
+
+    displayTodaySchedule();
 }
 
 function toggleTheme() {
@@ -202,9 +204,30 @@ function exportData() {
     URL.revokeObjectURL(url);
 }
 
+function displayTodaySchedule() {
+    const todayList = document.getElementById("todayScheduleList");
+    todayList.innerHTML = "";
+
+    const days = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+    const today = days[new Date().getDay()];
+
+    const todaySchedules = schedules.filter(
+        s => s.day.toLowerCase().startsWith(today) && !s.done
+    );
+
+    if (todaySchedules.length === 0) {
+        todayList.innerHTML = "<li>No schedule for today 🎉</li>";
+        return;
+    }
+
+    todaySchedules.forEach(s => {
+        todayList.innerHTML += `
+            <li>⏰ ${s.time} — 📘 ${s.subject}</li>
+        `;
+    });
+}
 
 displaySubjects();
 displayTasks();
 displaySchedules();
 updateDashboard();
-
